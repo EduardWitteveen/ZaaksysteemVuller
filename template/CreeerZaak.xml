@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 ../../gemmaonline.nl/Zkn0310_20140107_patch18/zkn0310/zkn0310_msg_totaal.xsd">
+  <ZKN:stuurgegevens>
+    <StUF:berichtcode>Lk01</StUF:berichtcode>
+    <StUF:zender>
+      <StUF:organisatie/>
+      <StUF:applicatie>zendende applicatie</StUF:applicatie>
+      <StUF:gebruiker>zendende gebruiker</StUF:gebruiker>
+    </StUF:zender>
+    <StUF:ontvanger>
+      <StUF:organisatie/>
+      <StUF:applicatie>ontvangende applicatie</StUF:applicatie>
+      <StUF:gebruiker>ontvangende gebruiker</StUF:gebruiker>
+    </StUF:ontvanger>
+    <StUF:referentienummer/>
+    <StUF:tijdstipBericht>20151001053944513</StUF:tijdstipBericht>
+    <StUF:entiteittype>ZAK</StUF:entiteittype>
+  </ZKN:stuurgegevens>
+  <ZKN:parameters>
+    <StUF:mutatiesoort>T</StUF:mutatiesoort>
+    <StUF:indicatorOvername>V</StUF:indicatorOvername>
+  </ZKN:parameters>
+  <ZKN:object StUF:entiteittype="ZAK" StUF:sleutelVerzendend="procesid" StUF:verwerkingssoort="T">
+    <!-- zaak kenmerken -->
+    <ZKN:identificatie>Zaakid</ZKN:identificatie>
+    <ZKN:omschrijving>Een omschrijving</ZKN:omschrijving>
+    <ZKN:toelichting>Een toelichting</ZKN:toelichting>
+    
+    <!-- resultaat -->
+    <ZKN:resultaat>
+      <ZKN:omschrijving>resultaat omschrijving</ZKN:omschrijving>
+      <ZKN:toelichting>resultaat toelichting</ZKN:toelichting>
+	  </ZKN:resultaat>
+    
+    <!-- datums -->
+    <ZKN:startdatum>20150715</ZKN:startdatum>
+    <ZKN:registratiedatum>20150715</ZKN:registratiedatum>
+		<ZKN:publicatiedatum>20150715</ZKN:publicatiedatum>
+		<ZKN:uiterlijkeEinddatum>20150715</ZKN:uiterlijkeEinddatum>
+    <ZKN:einddatum>20130516</ZKN:einddatum>
+
+    <ZKN:archiefnominatie>N</ZKN:archiefnominatie>
+    <ZKN:zaakniveau>1</ZKN:zaakniveau>
+    <ZKN:deelzakenIndicatie>N</ZKN:deelzakenIndicatie>
+
+    <StUF:extraElementen>
+      <StUF:extraElement naam="kanaalcode">Web</StUF:extraElement>
+    </StUF:extraElementen>      
+    
+    <!-- zaak type -->
+    <ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="T">
+        <ZKN:omschrijving>Zaaktype omschrijving</ZKN:omschrijving>
+        <ZKN:code>zaakcode</ZKN:code>
+      </ZKN:gerelateerde>
+    </ZKN:isVan>
+
+    <!-- burger -->
+    <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde>
+        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
+          <BG:inp.bsn>123456789</BG:inp.bsn>
+          <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+          <BG:geslachtsnaam>Geslachtsnaam</BG:geslachtsnaam>
+          <BG:voorvoegselGeslachtsnaam>Voorvoegsel</BG:voorvoegselGeslachtsnaam>
+          <BG:voorletters>Voorletters</BG:voorletters>
+          <BG:voornamen>Voornamen</BG:voornamen>
+          <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
+          <BG:geboortedatum>19800101</BG:geboortedatum>
+        </ZKN:natuurlijkPersoon>
+      </ZKN:gerelateerde>
+    </ZKN:heeftAlsInitiator>
+
+    <!-- medewerker -->
+    <ZKN:heeftAlsUitvoerende StUF:entiteittype="ZAKBTRUTV"  StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde>
+        <ZKN:medewerker StUF:entiteittype="MDW" StUF:verwerkingssoort="T">
+          <ZKN:identificatie>identificatie</ZKN:identificatie>
+          <ZKN:achternaam>Achternaam</ZKN:achternaam>
+          <ZKN:voorletters>Voorletters</ZKN:voorletters>
+          <ZKN:voorvoegselAchternaam>Voorvoegsel</ZKN:voorvoegselAchternaam>
+        </ZKN:medewerker>
+      </ZKN:gerelateerde>
+    </ZKN:heeftAlsUitvoerende>
+
+    <!-- status -->
+    <ZKN:heeft StUF:entiteittype="ZAKSTT"   StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde StUF:entiteittype="STT" StUF:verwerkingssoort="T">
+        <ZKN:volgnummer>1</ZKN:volgnummer>
+        <ZKN:code>STAT2</ZKN:code>
+        <ZKN:omschrijving>status 2</ZKN:omschrijving>
+      </ZKN:gerelateerde>
+      <ZKN:datumStatusGezet>20150715</ZKN:datumStatusGezet>
+      <ZKN:isGezetDoor StUF:entiteittype="ZAKSTTBTR" StUF:verwerkingssoort="T">
+        <ZKN:gerelateerde>
+          <ZKN:medewerker StUF:entiteittype="MDW" StUF:verwerkingssoort="T">
+            <ZKN:identificatie>identificatie</ZKN:identificatie>
+            <ZKN:achternaam>Achternaam</ZKN:achternaam>
+            <ZKN:voorletters>Voorletters</ZKN:voorletters>
+            <ZKN:voorvoegselAchternaam>Voorvoegsel</ZKN:voorvoegselAchternaam>
+          </ZKN:medewerker>
+        </ZKN:gerelateerde>
+        <ZKN:rolOmschrijving>behandelaar</ZKN:rolOmschrijving>
+        <ZKN:rolomschrijvingGeneriek>Uitvoerder</ZKN:rolomschrijvingGeneriek>
+      </ZKN:isGezetDoor>
+    </ZKN:heeft>
+
+  </ZKN:object>
+</ZKN:zakLk01>

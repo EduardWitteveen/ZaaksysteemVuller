@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" targetNamespace="http://www.egem.nl/StUF/sector/bg/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031000">
+	<include schemaLocation="../../bg0310/entiteiten/bg0310_ent_basis.xsd"/>
+	<import namespace="http://www.egem.nl/StUF/StUF0301" schemaLocation="../../0301/stuf0301mtom.xsd"/>
+	<annotation>
+		<documentation>
+			Bestand bevat de complexTypes voor het ZS-DMS koppelvlak.
+		</documentation>
+	</annotation>
+	<!--ComplexTypes voor simpleContent. -->
+	<complexType name="Url-r">
+		<simpleContent>
+			<restriction base="BG:Url-e">
+				<attribute ref="StUF:noValue" use="prohibited"/>
+				<attribute ref="StUF:exact"/>
+			</restriction>
+		</simpleContent>
+	</complexType>
+</schema>

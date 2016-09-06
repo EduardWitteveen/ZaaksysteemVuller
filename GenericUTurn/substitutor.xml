@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<substitutor>
+  <!-- verbinding -->
+  <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:organisatie">Organisatie</entry>
+  <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:applicatie">Midoffice Vuller 1.0</entry> -->
+  <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:gebruiker">${variable-eerste-ZaaktypeCode}</entry>
+  <entry key="//ZKN:stuurgegevens/StUF:ontvanger/StUF:organisatie">Organisatie</entry>
+  <entry key="//ZKN:stuurgegevens/StUF:ontvanger/StUF:applicatie">CDR</entry>
+  <entry key="//ZKN:stuurgegevens/StUF:ontvanger/StUF:gebruiker"/>
+
+  <!-- 
+  ${defined-messageid}, 
+  ${variable-eerste-Timestamp}, 
+  ${variable-eerste-Procesid}, 
+  ${variable-eerste-ZaaktypeCode}, 
+  ${variable-eerste-ZaaktypeOmschrijving}, 
+  ${variable-eerste-ZaakId}, 
+  ${variable-eerste-ZaakOmschrijving}, 
+  ${variable-eerste-ZaakToelichting}, 
+  ${variable-eerste-ResultaatOmschrijving}, 
+  ${variable-eerste-ResultaatToelichting}, 
+  ${variable-eerste-ZaakstatusCode}, 
+  ${variable-eerste-ZaakstatusOmschrijving},
+  ${variable-eerste-StartDatum}, 
+  ${variable-eerste-RegistratieDatum}, 
+  ${variable-eerste-PublicatieDatum}, 
+  ${variable-eerste-GeplandeeindDatum}, 
+  ${variable-eerste-UiterlijkeeindDatum}, 
+  ${variable-eerste-EindDatum}, 
+  ${variable-eerste-AanvragerNaam}, 
+  ${variable-eerste-AanvragerTelefoon}, 
+  ${variable-eerste-AanvragerEmail}, 
+  ${variable-eerste-AanvragerBsn}, 
+  ${variable-eerste-AanvragerGeslachtsnaam}, 
+  ${variable-eerste-AanvragerVoorvoegsel}, 
+  ${variable-eerste-AanvragerVoorletters},
+  ${variable-eerste-AanvragerVoornamen}, 
+  ${variable-eerste-AanvragerGeslachtsaanduiding}, 
+  ${variable-eerste-AanvragerGeboortedatum}, 
+  ${variable-eerste-Medium}, 
+  ${variable-eerste-MedewerkerIdentificatie}, 
+  ${variable-eerste-MedewerkerVoorletters}, 
+  ${variable-eerste-MedewerkerVoorvoegsel}, 
+  ${variable-eerste-MedewerkerAchternaam}, 
+  ${variable-eerste-MedewerkerTelefoon}, 
+  ${variable-eerste-MedewerkerEmail}
+  -->
+  <entry key="//ZKN:stuurgegevens/StUF:tijdstipBericht">${defined-timestamp}</entry>
+  <entry key="//ZKN:stuurgegevens/StUF:referentienummer">${defined-messageid}</entry>
+  
+  <!-- eerste -->
+  <entry key="//ZKN:object[1]/@StUF:sleutelVerzendend">${variable-eerste-Procesid}</entry>
+  <entry key="//ZKN:object[1]/ZKN:identificatie">${variable-eerste-ZaakId}</entry>
+  <entry key="//ZKN:object[1]/ZKN:resultaat/ZKN:omschrijving">${variable-eerste-ResultaatOmschrijving}</entry>
+  <entry key="//ZKN:object[1]/ZKN:resultaat/ZKN:toelichting">${variable-eerste-ResultaatToelichting}</entry>
+  <entry key="//ZKN:object[1]/StUF:extraElementen/StUF:extraElement[@naam='kanaalcode']">${variable-eerste-Medium}</entry>
+  <entry key="//ZKN:object[1]/ZKN:startdatum">${variable-eerste-StartDatum}</entry>
+  <entry key="//ZKN:object[1]/ZKN:registratiedatum">${variable-eerste-RegistratieDatum}</entry>
+  <entry key="//ZKN:object[1]/ZKN:publicatiedatum">${variable-eerste-PublicatieDatum}</entry>
+  <entry key="//ZKN:object[1]/ZKN:uiterlijkeEinddatum">${variable-eerste-UiterlijkeeindDatum}</entry>
+  <entry key="//ZKN:object[1]/ZKN:einddatum">${variable-eerste-EindDatum}</entry>  
+  <entry key="//ZKN:object[1]/ZKN:isVan/ZKN:gerelateerde/ZKN:code">${variable-eerste-ZaaktypeCode}</entry>
+  <entry key="//ZKN:object[1]/ZKN:omschrijving">${variable-eerste-ZaakOmschrijving}</entry>
+  <entry key="//ZKN:object[1]/ZKN:isVan/ZKN:gerelateerde/ZKN:omschrijving">${variable-eerste-ZaaktypeOmschrijving}</entry>
+  <entry key="//ZKN:object[1]/ZKN:toelichting">${variable-eerste-ZaakToelichting}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:inp.bsn">${variable-eerste-AanvragerBsn}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voornamen">${variable-eerste-AanvragerVoornamen}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voorletters">${variable-eerste-AanvragerVoorletters}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voorvoegselGeslachtsnaam">${variable-eerste-AanvragerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsnaam">${variable-eerste-AanvragerGeslachtsnaam}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsaanduiding">${variable-eerste-AanvragerGeslachtsaanduiding}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:identificatie">${variable-eerste-MedewerkerIdentificatie}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorletters">${variable-eerste-MedewerkerVoorletters}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorvoegselAchternaam">${variable-eerste-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:achternaam">${variable-eerste-MedewerkerAchternaam}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:gerelateerde/ZKN:code">${variable-eerste-ZaakstatusCode}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:gerelateerde/ZKN:omschrijving">${variable-eerste-ZaakstatusOmschrijving}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:datumStatusGezet">${variable-eerste-Timestamp}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:identificatie">${variable-eerste-MedewerkerVoorletters}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorletters">${variable-eerste-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorvoegselAchternaam">${variable-eerste-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:achternaam">${variable-eerste-MedewerkerAchternaam}</entry>
+
+  <!-- tweede  -->
+  <entry key="//ZKN:object[2]/@StUF:sleutelVerzendend">${variable-tweede-Procesid}</entry>
+  <entry key="//ZKN:object[2]/ZKN:identificatie">${variable-tweede-ZaakId}</entry>
+  <entry key="//ZKN:object[2]/ZKN:resultaat/ZKN:omschrijving">${variable-tweede-ResultaatOmschrijving}</entry>
+  <entry key="//ZKN:object[2]/ZKN:resultaat/ZKN:toelichting">${variable-tweede-ResultaatToelichting}</entry>
+  <entry key="//ZKN:object[2]/StUF:extraElementen/StUF:extraElement[@naam='kanaalcode']">${variable-tweede-Medium}</entry>
+  <entry key="//ZKN:object[2]/ZKN:startdatum">${variable-tweede-StartDatum}</entry>
+  <entry key="//ZKN:object[2]/ZKN:registratiedatum">${variable-tweede-RegistratieDatum}</entry>
+  <entry key="//ZKN:object[2]/ZKN:publicatiedatum">${variable-tweede-PublicatieDatum}</entry>
+  <entry key="//ZKN:object[2]/ZKN:uiterlijkeEinddatum">${variable-tweede-UiterlijkeeindDatum}</entry>
+  <entry key="//ZKN:object[2]/ZKN:einddatum">${variable-tweede-EindDatum}</entry>
+  <entry key="//ZKN:object[2]/ZKN:isVan/ZKN:gerelateerde/ZKN:code">${variable-tweede-ZaaktypeCode}</entry>
+  <entry key="//ZKN:object[2]/ZKN:omschrijving">${variable-tweede-ZaakOmschrijving}</entry>
+  <entry key="//ZKN:object[2]/ZKN:isVan/ZKN:gerelateerde/ZKN:omschrijving">${variable-tweede-ZaaktypeOmschrijving}</entry>
+  <entry key="//ZKN:object[2]/ZKN:toelichting">${variable-tweede-ZaakToelichting}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:inp.bsn">${variable-tweede-AanvragerBsn}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voornamen">${variable-tweede-AanvragerVoornamen}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voorletters">${variable-tweede-AanvragerVoorletters}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voorvoegselGeslachtsnaam">${variable-tweede-AanvragerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsnaam">${variable-tweede-AanvragerGeslachtsnaam}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsaanduiding">${variable-tweede-AanvragerGeslachtsaanduiding}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:identificatie">${variable-tweede-MedewerkerIdentificatie}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorletters">${variable-tweede-MedewerkerVoorletters}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorvoegselAchternaam">${variable-tweede-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:achternaam">${variable-tweede-MedewerkerAchternaam}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:gerelateerde/ZKN:code">${variable-tweede-ZaakstatusCode}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:gerelateerde/ZKN:omschrijving">${variable-tweede-ZaakstatusOmschrijving}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:datumStatusGezet">${variable-tweede-Timestamp}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:identificatie">${variable-tweede-MedewerkerVoorletters}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorletters">${variable-tweede-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorvoegselAchternaam">${variable-tweede-MedewerkerVoorvoegsel}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeft/ZKN:isGezetDoor/ZKN:gerelateerde/ZKN:medewerker/ZKN:achternaam">${variable-tweede-MedewerkerAchternaam}</entry>
+</substitutor>

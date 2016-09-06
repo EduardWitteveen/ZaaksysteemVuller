@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<namespaces>
+  <entry key="xsi">http://www.w3.org/2001/XMLSchema-instance</entry>
+  <entry key="StUF">http://www.egem.nl/StUF/StUF0301</entry>
+  <entry key="ZKN">http://www.egem.nl/StUF/sector/zkn/0310</entry>
+  <entry key="BG">http://www.egem.nl/StUF/sector/bg/0310</entry>
+</namespaces>

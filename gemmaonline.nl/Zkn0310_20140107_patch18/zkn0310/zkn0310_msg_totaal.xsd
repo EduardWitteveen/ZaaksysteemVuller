@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- edited with XMLSpy v2012 sp1 (http://www.altova.com) by Maarten van den Broek (messageDesign) -->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" targetNamespace="http://www.egem.nl/StUF/sector/zkn/0310" elementFormDefault="qualified" attributeFormDefault="unqualified" version="031001">
+	<annotation>
+		<documentation>
+			Dit schema bevat verwijzingen naar de schema's met de elementdefinities, zodat vanuit één schema alle berichtelementen gevalideerd kunnen worden. Dit schema zal elke keer als er een koppelvlak wordt toegevoegd in de namespace http://www.egem.nl/StUF/sector/zkn/0310 worden uitgebreid met een verwijzing naar het msg-schema voor dat koppelvlak.
+
+			Wijzigingen vergeleken met versie zkn0310_msg_totaal.xsd v031000:
+			- Message schema toegevoegd n.a.v. toevoeging zs-dms berichtencatralogus.
+			
+		</documentation>
+	</annotation>
+	<include schemaLocation="mutatie/zkn0310_msg_mutatie.xsd"/>
+	<include schemaLocation="vraagAntwoord/zkn0310_msg_vraagAntwoord.xsd"/>
+	<include schemaLocation="zs-dms/zkn0310_msg_zs-dms.xsd"/>
+</schema>

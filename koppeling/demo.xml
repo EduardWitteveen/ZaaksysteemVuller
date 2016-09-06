@@ -1,0 +1,21 @@
+<config active="true">
+	<code>DEMO</code>
+	<desctiption>demo</desctiption>
+
+	<statuscodes>
+		<status code="statuscod1" type="start">statusosmchrijving1</status>		
+		<status code="statuscod2">statusosmchrijving2</status>
+		<status code="statuscod3" type="stop">statusosmchrijving3</status>   
+	</statuscodes>
+
+	<resultaten>
+		<resultaat code="resultaat1">resultaatomschrijving1</resultaat>
+		<resultaat code="resultaat2">resultaatomschrijving2</resultaat>
+		<resultaat code="resultaat3">resultaatomschrijving3</resultaat>		
+	</resultaten>
+
+	<email>demo@witteveen-automatisering.nl</email>
+	<provider>System.Data.OleDb</provider>		
+	<!-- <connection>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\eduard\ownCloud\20160324\GenericUTurn\koppeling\demo.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1;";</connection> -->
+	<connection>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\..\data\demo.xls;Extended Properties="Excel 8.0;HDR=YES";</connection>
+</config>
