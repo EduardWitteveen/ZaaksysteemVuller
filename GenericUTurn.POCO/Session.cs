@@ -298,17 +298,30 @@ namespace GenericUTurn.POCO
             {
                 AddVariable(variables, prefix, property.Name, property.GetValue(zaak));
             }
-
+            AddVariable(variables, prefix, "ZaaktypeCodeProcesid", zaak.ZaaktypeCode + "#" + zaak.Procesid);
             if (zaak.MedewerkerIdentificatie != null &&  zaak.MedewerkerIdentificatie.Trim().Length > 0) { 
                 // create your domain context
                 var ctx = new System.DirectoryServices.AccountManagement.PrincipalContext(System.DirectoryServices.AccountManagement.ContextType.Domain);
                 var  query = new System.DirectoryServices.AccountManagement.UserPrincipal(ctx);
-                query.SamAccountName = zaak.MedewerkerIdentificatie.Trim().ToLower();
+
+                // step 1:  a logon name that supports previous version of Windows
+                var identificatie=zaak.MedewerkerIdentificatie.Trim().ToLower();
+                if (identificatie.IndexOf("@") > 0) identificatie = identificatie.Substring(0, identificatie.IndexOf("@"));
+                query.SamAccountName = identificatie;
                 var search = new System.DirectoryServices.AccountManagement.PrincipalSearcher(query);
                 var result = (System.DirectoryServices.AccountManagement.UserPrincipal) search.FindOne();
                 if (result == null) {
+                    // step 2:  the logon name for the user
                     query = new System.DirectoryServices.AccountManagement.UserPrincipal(ctx);
-                    query.UserPrincipalName = zaak.MedewerkerIdentificatie.ToLower() + "*";
+                    query.UserPrincipalName = identificatie + "*";
+                    search = new System.DirectoryServices.AccountManagement.PrincipalSearcher(query);
+                    result = (System.DirectoryServices.AccountManagement.UserPrincipal)search.FindOne();
+                }
+                if (result == null)
+                {
+                    // step 3:  the email adres
+                    query = new System.DirectoryServices.AccountManagement.UserPrincipal(ctx);
+                    query.EmailAddress = zaak.MedewerkerIdentificatie.Trim().ToLower();
                     search = new System.DirectoryServices.AccountManagement.PrincipalSearcher(query);
                     result = (System.DirectoryServices.AccountManagement.UserPrincipal)search.FindOne();
                     if (result == null) throw new Exception("user not found in LDAP:" + zaak.MedewerkerIdentificatie);

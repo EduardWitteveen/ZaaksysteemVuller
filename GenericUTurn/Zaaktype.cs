@@ -25,9 +25,16 @@ namespace GenericUTurn
             LogFile = new FileInfo(configfile.FullName.Replace(configfile.Extension, ".log"));
         }
 
+        private String getXpathValue(string xpath)
+        {
+            var node = config.SelectSingleNode(xpath);
+            if (node == null) return null;
+            return node.Value;
+        }
+
         public bool Active {
             get {
-                return Convert.ToBoolean(config.SelectSingleNode("/config/@active").Value);
+                return Convert.ToBoolean(getXpathValue("/config/@active"));
             }
         }
         
@@ -35,7 +42,7 @@ namespace GenericUTurn
         {
             get
             {
-                return config.SelectSingleNode("/config/description/text()").Value;
+                return getXpathValue("/config/description/text()");
             }
         }
 
@@ -43,7 +50,7 @@ namespace GenericUTurn
         {
             get
             {
-                return config.SelectSingleNode("/config/connection/text()").Value;
+                return getXpathValue("/config/connection/text()");
             }
         }
 
@@ -52,7 +59,7 @@ namespace GenericUTurn
         {
             get
             {
-                return config.SelectSingleNode("/config/provider/text()").Value;
+                return getXpathValue("/config/provider/text()");
             }
         }
 
@@ -60,7 +67,7 @@ namespace GenericUTurn
         {
             get
             {
-                return config.SelectSingleNode("/config/email/text()").Value;
+                return getXpathValue("/config/email/text()");
             }
         }
 

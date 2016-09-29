@@ -86,6 +86,7 @@ namespace GenericUTurn.ServiceService
             catch (Exception ex)
             {
                 string message = "Worker thread: mainloop failure! Exception:" + ex.ToString();
+                Console.WriteLine("ERROR:" + message);
                 eventLog.WriteEntry(message, EventLogEntryType.Error);
             }
         }

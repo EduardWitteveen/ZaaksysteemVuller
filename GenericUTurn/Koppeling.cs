@@ -61,6 +61,7 @@ namespace GenericUTurn
                         // filter op de bestond al dingen!
                         if (sce.HttpStatusCode == 500 && sce.Message.Contains("<StUF:details>De zaak is niet gevonden."))
                         {
+                            Console.WriteLine("ERROR: zaak niet gevonden:" + sce.Message);
                             // gebruik ons eerder vastgestelde zaakid
                             // en we gaan hem nogmaals toeveogen!
                             backofficezaak.ZaakId = uturnzaak.ZaakId;
@@ -68,6 +69,7 @@ namespace GenericUTurn
                             uturnzaak = null;
                             fallbackscenario = true;
                         }
+                        else throw sce;
                     }
                 }
                 if (uturnzaak == null)

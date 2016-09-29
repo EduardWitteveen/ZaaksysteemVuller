@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,18 +11,35 @@ namespace GenericUTurn.ServiceClient
     public class ServiceClientException : Exception
     {
         public int HttpStatusCode;
+        //public Exception innerexception;
+        //public string message;
 
-        public ServiceClientException(int httpStatusCode, string message, System.Net.WebException exception)
-            : base(message, exception)
+        public ServiceClientException(int status, string message, WebException innerexception) : base(message, innerexception)
         {
-            this.HttpStatusCode = httpStatusCode;
+            this.HttpStatusCode = status;
+            //this.message = message;
+            //this.innerexception = innerexception;
         }
-
     }
 
     public class ServiceClient
     {
+        //public static ServiceClient Test1Client
+        //{
+        //    get
+        //    {
+        //        return new ServiceClient(new Uri("http://www.stgregorioschurchdc.org/cgi/websvccal.cgi"));
+        //    }
+        //}
+        /*
+            // System.Net.ServicePointManager.ServerCertificateValidationCallback = new System.Net.Security.RemoteCertificateValidationCallback(AcceptAllCertifications);
 
+            Uri uri = new Uri("https://192.168.111.30:8080/");
+            System.Net.WebRequest webRequest = System.Net.WebRequest.Create(uri);
+            webRequest.Proxy = new System.Net.WebProxy();
+            System.Net.WebResponse webResponse = webRequest.GetResponse();
+            //ReadFrom(webResponse.GetResponseStream());
+        */
         private POCO.Session logging;
 
         public ServiceClient(POCO.Session logging)
@@ -30,8 +48,7 @@ namespace GenericUTurn.ServiceClient
         }
 
         // TODO: misschien Substitutor niet in request, maar als een parameter hier?
-        public static System.Xml.Schema.ValidationEventArgs parsererror = null;
-        public ServiceClientResponse Call(string kenmerk, Uri url, ServiceClientRequest request, Dictionary<string, string> variables)
+        public ServiceClientResponse Call(string kenmerk, Uri url, ServiceClientRequest request, Dictionary<string, string> variables) 
         {
             System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
             webRequest.Headers.Add("SOAPAction", request.Action);
@@ -68,11 +85,9 @@ namespace GenericUTurn.ServiceClient
 
             // WE ARE STRICT!!!
             // START: xml validation
-            parsererror = null;
             content.Schemas.Add(new System.Xml.Schema.XmlSchema());
             var eventHandler = new System.Xml.Schema.ValidationEventHandler(ValidationEventHandler);
             content.Validate(eventHandler);
-            if (parsererror != null) throw parsererror.Exception;
             // STOP: xml validation
             
             // here we are in the SoapEnvelope
@@ -101,19 +116,12 @@ namespace GenericUTurn.ServiceClient
                 asyncResult.AsyncWaitHandle.WaitOne();
                 // get the response from the completed web request.
                 var response = (System.Net.HttpWebResponse) webRequest.EndGetResponse(asyncResult);
-                entry.ResponseCode = response.StatusDescription;
+                entry.ResponseCode = (int) response.StatusCode;
                 result = new ServiceClientResponse(response, variables);   
 
             }
             catch (System.Net.WebException ex)
             {
-
-                var response =  ex.Response as System.Net.HttpWebResponse;
-                if(response == null) {
-                    // nothing we can use!
-                    throw ex;
-                }
-                
                 /*
                 entry.Response = ex.ToString();
                 Exception inner = ex.InnerException;
@@ -122,14 +130,24 @@ namespace GenericUTurn.ServiceClient
                     inner = inner.InnerException;
                 } 
                 */
-                using (System.IO.Stream stream = response.GetResponseStream())
+                if (ex.Status == WebExceptionStatus.ProtocolError)
                 {
-                    System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
-                    entry.ResponseBody = reader.ReadToEnd();
-                }                
-                logging.Update(entry);
-                // and throw again (we did our logging)
-                throw new ServiceClientException((int)response.StatusCode, entry.ResponseBody, ex);
+                    var response = ex.Response as HttpWebResponse;
+                    if (response != null)
+                    {
+                        using (System.IO.Stream stream = response.GetResponseStream())
+                        {
+                            System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
+                            entry.ResponseBody = reader.ReadToEnd();
+                        }
+                        entry.ResponseCode = (int) response.StatusCode;
+                        logging.Update(entry);
+                        // and throw again (we did our logging)
+                        throw new ServiceClientException((int)response.StatusCode, entry.ResponseBody, ex);
+                    }
+                }
+                new Exception("error connecting to:" + url + " soapaction:" + entry.Action + " xml:" + entry.RequestBody, ex);
+
             }
             entry.ResponseBody = GenericUTurn.Xml.TemplaceDocument.PrettyPrint(result.Content.Document.OuterXml);
             logging.Update(entry);
@@ -142,7 +160,17 @@ namespace GenericUTurn.ServiceClient
 
         private void ValidationEventHandler(object sender, System.Xml.Schema.ValidationEventArgs e)
         {
-            parsererror = e;
+            switch (e.Severity)
+            {
+                case System.Xml.Schema.XmlSeverityType.Error:
+                    throw new Exception("Error:" +  e.Message);
+                    break;
+                case System.Xml.Schema.XmlSeverityType.Warning:
+                    throw new Exception("Warning:" + e.Message);
+                    break;
+                default:
+                    throw new Exception("Unknown:" + e.Message);
+            }
         }
 
 

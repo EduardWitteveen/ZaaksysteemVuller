@@ -67,7 +67,6 @@ namespace GenericUTurn.Xml
                         }
                         System.Diagnostics.Debug.WriteLine("\tsuccesfull set the variable: '" + search + "' : " + nav.Value);
                     }
-#if DEBUG
                     else if (search.StartsWith("${")) {
                         string keys = null;
                         foreach (string key in variables.Keys)
@@ -76,7 +75,6 @@ namespace GenericUTurn.Xml
                         }
                         System.Diagnostics.Debug.WriteLine("Subsitutor could not replace variable with name:" + search + " was not found! (" + keys + ")");
                     }
-#endif
                     else 
                     {
                         nav.SetValue(search);
@@ -154,5 +152,46 @@ namespace GenericUTurn.Xml
 
             return result.ToString();
         }
+        /*
+        static void ValidationEventHandler(object sender, System.Xml.Schema.ValidationEventArgs e)
+        {
+            switch (e.Severity)
+            {
+                case System.Xml.Schema.XmlSeverityType.Error:
+                    validationError = true;
+                    validationLog += "Error: " + e.Message + "\n";
+                    break;
+                case System.Xml.Schema.XmlSeverityType.Warning:
+                    validationLog += "Warning: " + e.Message + "\n";
+                    break;
+                default:
+                    validationLog += "Unknown: " + e.Message + "\n";
+                    break;
+            }
+        }
+
+        public bool ValidateDocument()
+        {
+            // caution: not thread safe!
+            validationLog = "";
+            validationError = false;
+
+            var eventHandler = new System.Xml.Schema.ValidationEventHandler(ValidationEventHandler);
+            settings.ValidationType = ValidationType.Schema;
+            Document.Validate(eventHandler);
+
+            return validationError;
+        }
+        private static String validationLog;
+        private static bool validationError;
+
+        public String ValidationLog
+        {
+            get
+            {
+                return validationLog;
+            }
+        }
+        */
     }
 }
