@@ -12,7 +12,7 @@ namespace GenericUTurn.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "14.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "15.5.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -25,124 +25,10 @@ namespace GenericUTurn.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("substitutor.xml")]
-        public string Substitutor {
+        [global::System.Configuration.DefaultSettingValueAttribute("11")]
+        public string Obsolete1 {
             get {
-                return ((string)(this["Substitutor"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\\..\\..\\..\\data\\uturn.accdb")]
-        public string UTurnDatabaseConnection {
-            get {
-                return ((string)(this["UTurnDatabaseConnection"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("10")]
-        public int UTurnSleepInterval {
-            get {
-                return ((int)(this["UTurnSleepInterval"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("namespaces.xml")]
-        public string Namespaces {
-            get {
-                return ((string)(this["Namespaces"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("template\\GenereerZaakIdentificatie.xml")]
-        public string TemplateGenereerZaakIdentificatie {
-            get {
-                return ((string)(this["TemplateGenereerZaakIdentificatie"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("template\\UpdateZaak.xml")]
-        public string TemplateUpdateZaak {
-            get {
-                return ((string)(this["TemplateUpdateZaak"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("..\\..\\..\\..\\koppeling")]
-        public string Koppelingen {
-            get {
-                return ((string)(this["Koppelingen"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("iszfex08")]
-        public string EmailSmtp {
-            get {
-                return ((string)(this["EmailSmtp"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("MidofficeVuller: fout betreffende zaaktype")]
-        public string EmailTitel {
-            get {
-                return ((string)(this["EmailTitel"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("template\\CreeerZaak.xml")]
-        public string TemplateCreeerZaak {
-            get {
-                return ((string)(this["TemplateCreeerZaak"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDoc" +
-            "umentServices/VrijBerichtService.svc")]
-        public string StandaardZaakDocumentServicesVrijBerichtService {
-            get {
-                return ((string)(this["StandaardZaakDocumentServicesVrijBerichtService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDoc" +
-            "umentServices/OntvangAsynchroonService.svc")]
-        public string StandaardZaakDocumentServicesOntvangAsynchroonService {
-            get {
-                return ((string)(this["StandaardZaakDocumentServicesOntvangAsynchroonService"]));
-            }
-        }
-        
-        [global::System.Configuration.ApplicationScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.WebServiceUrl)]
-        [global::System.Configuration.DefaultSettingValueAttribute("http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDoc" +
-            "umentServices/BeantwoordVraagService.svc")]
-        public string StandaardZaakDocumentServicesBeantwoordVraagService {
-            get {
-                return ((string)(this["StandaardZaakDocumentServicesBeantwoordVraagService"]));
+                return ((string)(this["Obsolete1"]));
             }
         }
         
@@ -157,7 +43,118 @@ namespace GenericUTurn.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("System.Data.OleDb")]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://iszfmid03.iszf.local:53803/TSWFZKS-ZaakDocumentServices/VrijBerichtService" +
+            ".svc")]
+        public string StandaardZaakDocumentServicesVrijBerichtService {
+            get {
+                return ((string)(this["StandaardZaakDocumentServicesVrijBerichtService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://iszfmid03.iszf.local:53803/TSWFZKS-ZaakDocumentServices/OntvangAsynchroonS" +
+            "ervice.svc")]
+        public string StandaardZaakDocumentServicesOntvangAsynchroonService {
+            get {
+                return ((string)(this["StandaardZaakDocumentServicesOntvangAsynchroonService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("http://iszfmid03.iszf.local:53803/TSWFZKS-ZaakDocumentServices/BeantwoordVraagSer" +
+            "vice.svc")]
+        public string StandaardZaakDocumentServicesBeantwoordVraagService {
+            get {
+                return ((string)(this["StandaardZaakDocumentServicesBeantwoordVraagService"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\template\\substitutor.xml")]
+        public string Substitutor {
+            get {
+                return ((string)(this["Substitutor"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\template\\namespaces.xml")]
+        public string Namespaces {
+            get {
+                return ((string)(this["Namespaces"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\template\\GenereerZaakIdentificatie.xml")]
+        public string TemplateGenereerZaakIdentificatie {
+            get {
+                return ((string)(this["TemplateGenereerZaakIdentificatie"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\template\\UpdateZaak.xml")]
+        public string TemplateUpdateZaak {
+            get {
+                return ((string)(this["TemplateUpdateZaak"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\koppeling")]
+        public string Koppelingen {
+            get {
+                return ((string)(this["Koppelingen"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("\\\\swffb01\\Test\\template\\CreeerZaak.xml")]
+        public string TemplateCreeerZaak {
+            get {
+                return ((string)(this["TemplateCreeerZaak"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("100")]
+        public int MaximumWorkQueue {
+            get {
+                return ((int)(this["MaximumWorkQueue"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("webmail.sudwestfryslan.nl")]
+        public string EmailSmtp {
+            get {
+                return ((string)(this["EmailSmtp"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("[TEST] ZaaksysteemVuller: fout betreffende zaaktype")]
+        public string EmailTitel {
+            get {
+                return ((string)(this["EmailTitel"]));
+            }
+        }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("System.Data.SqlClient")]
         public string UTurnDatabaseProvider {
             get {
                 return ((string)(this["UTurnDatabaseProvider"]));

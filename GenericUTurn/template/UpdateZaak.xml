@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+?xml version="1.0" encoding="utf-8"?>
 <ZKN:zakLk01 xmlns:ZKN="http://www.egem.nl/StUF/sector/zkn/0310" xmlns:BG="http://www.egem.nl/StUF/sector/bg/0310" xmlns:StUF="http://www.egem.nl/StUF/StUF0301" xmlns:gml="http://www.opengis.net/gml" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.egem.nl/StUF/sector/zkn/0310 ../../gemmaonline.nl/Zkn0310_20140107_patch18/zkn0310/zkn0310_msg_totaal.xsd">
   <ZKN:stuurgegevens>
     <StUF:berichtcode>Lk01</StUF:berichtcode>
@@ -29,72 +29,6 @@
     <ZKN:omschrijving>Een omschrijving</ZKN:omschrijving>
     <ZKN:toelichting>Een toelichting</ZKN:toelichting>
 
-		<!--
-		<ZKN:kenmerk>
-			<ZKN:kenmerk>13113</ZKN:kenmerk>
-			<ZKN:bron>KING</ZKN:bron>
-		</ZKN:kenmerk>
-		-->
-		<ZKN:anderZaakObject>
-			<ZKN:omschrijving>Geometie omschrijving</ZKN:omschrijving>
-      <ZKN:aanduiding>Geometie aanduiding</ZKN:aanduiding>
-			<ZKN:lokatie>
-        <!--
-				<gml:Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
-					<gml:exterior>
-						<gml:LinearRing>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-							<gml:pos>3273.333</gml:pos>
-							<gml:pos>565558.889</gml:pos>
-							<gml:pos>3323.333</gml:pos>
-							<gml:pos>565555.556</gml:pos>
-							<gml:pos>3347.778</gml:pos>
-							<gml:pos>565542.222</gml:pos>
-							<gml:pos>3385.556</gml:pos>
-							<gml:pos>565576.667</gml:pos>
-							<gml:pos>3326.667</gml:pos>
-							<gml:pos>565584.444</gml:pos>
-							<gml:pos>3296.667</gml:pos>
-							<gml:pos>565624.444</gml:pos>
-							<gml:pos>3278.889</gml:pos>
-							<gml:pos>565623.333</gml:pos>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-						</gml:LinearRing>
-					</gml:exterior>
-				</gml:Polygon>
-			</ZKN:lokatie>        
-        -->
-				<gml:Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
-					<gml:exterior>
-						<gml:LinearRing>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-							<gml:pos>3273.333</gml:pos>
-							<gml:pos>565558.889</gml:pos>
-							<gml:pos>3323.333</gml:pos>
-							<gml:pos>565555.556</gml:pos>
-							<gml:pos>3347.778</gml:pos>
-							<gml:pos>565542.222</gml:pos>
-							<gml:pos>3385.556</gml:pos>
-							<gml:pos>565576.667</gml:pos>
-							<gml:pos>3326.667</gml:pos>
-							<gml:pos>565584.444</gml:pos>
-							<gml:pos>3296.667</gml:pos>
-							<gml:pos>565624.444</gml:pos>
-							<gml:pos>3278.889</gml:pos>
-							<gml:pos>565623.333</gml:pos>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-						</gml:LinearRing>
-					</gml:exterior>
-				</gml:Polygon>
-			</ZKN:lokatie>
-			<ZKN:registratie>Geometrie registratie</ZKN:registratie>
-		</ZKN:anderZaakObject>		
-	
-	
     <!-- resultaat -->
     <ZKN:resultaat>
       <ZKN:omschrijving>resultaat omschrijving</ZKN:omschrijving>
@@ -124,44 +58,21 @@
       </ZKN:gerelateerde>
     </ZKN:isVan>
 
-		<!-- aanvrager -->
-		<ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
-
-			<ZKN:gerelateerde>		
-				<!-- natuurlijk persoon -->
-				<ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
-					<BG:inp.bsn>123456789</BG:inp.bsn>
-					<BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
-					<BG:geslachtsnaam>Geslachtsnaam</BG:geslachtsnaam>
-					<BG:voorvoegselGeslachtsnaam>Voorvoegsel</BG:voorvoegselGeslachtsnaam>
-					<BG:voorletters>Voorletters</BG:voorletters>
-					<BG:voornamen>Voornamen</BG:voornamen>
-					<BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
-					<BG:geboortedatum>19800101</BG:geboortedatum>
-				</ZKN:natuurlijkPersoon>
-			</ZKN:gerelateerde>
-
-			<ZKN:gerelateerde>
-				<!-- niet natuurlijk persoon (bedrijf) -->
-				<ZKN:nietNatuurlijkPersoon StUF:entiteittype="NNP" StUF:verwerkingssoort="T">
-					<!--
-					inn.nnpId == rsin nummer: https://discussie.kinggemeenten.nl/discussie/gemma/stuf-204-bg/nieuwe-nummers-kvk
-					rsin nummer == bsn nummer : http://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/voordat_u_start/rechtsvorm/
-					(bij eenmanszaak) -->
-					<BG:inn.nnpId>123456789</BG:inn.nnpId>
-					<BG:statutaireNaam>Statutaire Naam</BG:statutaireNaam>
-				</ZKN:nietNatuurlijkPersoon>
-			</ZKN:gerelateerde>
-
-			<ZKN:gerelateerde>
-				<!-- vestiging -->
-				<ZKN:vestiging StUF:entiteittype="VES" StUF:verwerkingssoort="T">
-					<BG:vestigingsNummer>232323232323</BG:vestigingsNummer>
-					<BG:handelsnaam>Handels Naam</BG:handelsnaam>
-				</ZKN:vestiging>
-			</ZKN:gerelateerde>
-
-		</ZKN:heeftAlsInitiator>
+    <!-- burger -->
+    <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde>
+        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
+          <BG:inp.bsn>123456789</BG:inp.bsn>
+          <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+          <BG:geslachtsnaam>Geslachtsnaam</BG:geslachtsnaam>
+          <BG:voorvoegselGeslachtsnaam>Voorvoegsel</BG:voorvoegselGeslachtsnaam>
+          <BG:voorletters>Voorletters</BG:voorletters>
+          <BG:voornamen>Voornamen</BG:voornamen>
+          <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
+          <BG:geboortedatum>19800101</BG:geboortedatum>
+        </ZKN:natuurlijkPersoon>
+      </ZKN:gerelateerde>
+    </ZKN:heeftAlsInitiator>
 
     <!-- medewerker -->
     <ZKN:heeftAlsUitvoerende StUF:entiteittype="ZAKBTRUTV"  StUF:verwerkingssoort="T">
@@ -203,45 +114,6 @@
     <ZKN:omschrijving>Een omschrijving</ZKN:omschrijving>
     <ZKN:toelichting>Een toelichting</ZKN:toelichting>
 
-		<!--
-		<ZKN:kenmerk>
-			<ZKN:kenmerk>13113</ZKN:kenmerk>
-			<ZKN:bron>KING</ZKN:bron>
-		</ZKN:kenmerk>
-		-->
-		<ZKN:anderZaakObject>
-			<ZKN:omschrijving>Geometie omschrijving</ZKN:omschrijving>
-      <ZKN:aanduiding>Geometie aanduiding</ZKN:aanduiding>
-			<ZKN:lokatie>
-				<gml:Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
-					<gml:exterior>
-						<gml:LinearRing>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-							<gml:pos>3273.333</gml:pos>
-							<gml:pos>565558.889</gml:pos>
-							<gml:pos>3323.333</gml:pos>
-							<gml:pos>565555.556</gml:pos>
-							<gml:pos>3347.778</gml:pos>
-							<gml:pos>565542.222</gml:pos>
-							<gml:pos>3385.556</gml:pos>
-							<gml:pos>565576.667</gml:pos>
-							<gml:pos>3326.667</gml:pos>
-							<gml:pos>565584.444</gml:pos>
-							<gml:pos>3296.667</gml:pos>
-							<gml:pos>565624.444</gml:pos>
-							<gml:pos>3278.889</gml:pos>
-							<gml:pos>565623.333</gml:pos>
-							<gml:pos>3272.222</gml:pos>
-							<gml:pos>565622.222</gml:pos>
-						</gml:LinearRing>
-					</gml:exterior>
-				</gml:Polygon>
-			</ZKN:lokatie>
-			<ZKN:registratie>Geometrie registratie</ZKN:registratie>
-		</ZKN:anderZaakObject>		
-	
-	
     <!-- resultaat -->
     <ZKN:resultaat>
       <ZKN:omschrijving>resultaat omschrijving</ZKN:omschrijving>
@@ -271,45 +143,21 @@
       </ZKN:gerelateerde>
     </ZKN:isVan>
 
-		<!-- aanvrager -->
-		<ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
-
-			<ZKN:gerelateerde>		
-				<!-- natuurlijk persoon -->
-				<ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
-					<BG:inp.bsn>123456789</BG:inp.bsn>
-					<BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
-					<BG:geslachtsnaam>Geslachtsnaam</BG:geslachtsnaam>
-					<BG:voorvoegselGeslachtsnaam>Voorvoegsel</BG:voorvoegselGeslachtsnaam>
-					<BG:voorletters>Voorletters</BG:voorletters>
-					<BG:voornamen>Voornamen</BG:voornamen>
-					<BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
-					<BG:geboortedatum>19800101</BG:geboortedatum>
-				</ZKN:natuurlijkPersoon>
-			</ZKN:gerelateerde>
-
-			<ZKN:gerelateerde>
-				<!-- niet natuurlijk persoon (bedrijf) -->
-				<ZKN:nietNatuurlijkPersoon StUF:entiteittype="NNP" StUF:verwerkingssoort="T">
-					<!--
-					inn.nnpId == rsin nummer: https://discussie.kinggemeenten.nl/discussie/gemma/stuf-204-bg/nieuwe-nummers-kvk
-					rsin nummer == bsn nummer : http://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/voordat_u_start/rechtsvorm/
-					(bij eenmanszaak) -->
-					<BG:inn.nnpId>123456789</BG:inn.nnpId>
-					<BG:statutaireNaam>Statutaire Naam</BG:statutaireNaam>
-				</ZKN:nietNatuurlijkPersoon>
-			</ZKN:gerelateerde>
-
-			<ZKN:gerelateerde>
-				<!-- vestiging -->
-				<ZKN:vestiging StUF:entiteittype="VES" StUF:verwerkingssoort="T">
-					<BG:vestigingsNummer>232323232323</BG:vestigingsNummer>
-					<BG:handelsnaam>Handels Naam</BG:handelsnaam>
-				</ZKN:vestiging>
-			</ZKN:gerelateerde>
-
-
-		</ZKN:heeftAlsInitiator>
+    <!-- burger -->
+    <ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
+      <ZKN:gerelateerde>
+        <ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
+          <BG:inp.bsn>123456789</BG:inp.bsn>
+          <BG:authentiek StUF:metagegeven="true">J</BG:authentiek>
+          <BG:geslachtsnaam>Geslachtsnaam</BG:geslachtsnaam>
+          <BG:voorvoegselGeslachtsnaam>Voorvoegsel</BG:voorvoegselGeslachtsnaam>
+          <BG:voorletters>Voorletters</BG:voorletters>
+          <BG:voornamen>Voornamen</BG:voornamen>
+          <BG:geslachtsaanduiding>M</BG:geslachtsaanduiding>
+          <BG:geboortedatum>19800101</BG:geboortedatum>
+        </ZKN:natuurlijkPersoon>
+      </ZKN:gerelateerde>
+    </ZKN:heeftAlsInitiator>
 
     <!-- medewerker -->
     <ZKN:heeftAlsUitvoerende StUF:entiteittype="ZAKBTRUTV"  StUF:verwerkingssoort="T">

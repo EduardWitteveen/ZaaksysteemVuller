@@ -2,50 +2,44 @@
 <SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="GenericUTurn.Properties" GeneratedClassName="Settings">
   <Profiles />
   <Settings>
-    <Setting Name="Substitutor" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">substitutor.xml</Value>
-    </Setting>
-    <Setting Name="UTurnDatabaseConnection" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\..\data\uturn.accdb</Value>
-    </Setting>
-    <Setting Name="UTurnSleepInterval" Type="System.Int32" Scope="Application">
-      <Value Profile="(Default)">10</Value>
-    </Setting>
-    <Setting Name="Namespaces" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">namespaces.xml</Value>
-    </Setting>
-    <Setting Name="TemplateGenereerZaakIdentificatie" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">template\GenereerZaakIdentificatie.xml</Value>
-    </Setting>
-    <Setting Name="TemplateUpdateZaak" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">template\UpdateZaak.xml</Value>
-    </Setting>
-    <Setting Name="Koppelingen" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">..\..\..\..\koppeling</Value>
-    </Setting>
-    <Setting Name="EmailSmtp" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">iszfex08</Value>
-    </Setting>
-    <Setting Name="EmailTitel" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">MidofficeVuller: fout betreffende zaaktype</Value>
-    </Setting>
-    <Setting Name="TemplateCreeerZaak" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">template\CreeerZaak.xml</Value>
-    </Setting>
-    <Setting Name="StandaardZaakDocumentServicesVrijBerichtService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDocumentServices/VrijBerichtService.svc</Value>
-    </Setting>
-    <Setting Name="StandaardZaakDocumentServicesOntvangAsynchroonService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDocumentServices/OntvangAsynchroonService.svc</Value>
-    </Setting>
-    <Setting Name="StandaardZaakDocumentServicesBeantwoordVraagService" Type="(Web Service URL)" Scope="Application">
-      <Value Profile="(Default)">http://localhost:52663/zkn0310-zs-dms/?url=http://ISZFMID03:53803/TSWFZKS-ZaakDocumentServices/BeantwoordVraagService.svc</Value>
+    <Setting Name="Obsolete1" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">11</Value>
     </Setting>
     <Setting Name="EmailAfzender" Type="System.String" Scope="Application">
       <Value Profile="(Default)">eduard@witteveen-automatisering.nl</Value>
     </Setting>
+    <Setting Name="StandaardZaakDocumentServicesVrijBerichtService" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">http://iszfmid03.iszf.local:53803/TSWFZKS-ZaakDocumentServices/VrijBerichtService.svc</Value>
+    </Setting>
+    <Setting Name="Namespaces" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\swffb01\Test\template\namespaces.xml</Value>
+    </Setting>
+    <Setting Name="TemplateGenereerZaakIdentificatie" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\swffb01\Test\template\GenereerZaakIdentificatie.xml</Value>
+    </Setting>
+    <Setting Name="TemplateUpdateZaak" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\swffb01\Test\template\UpdateZaak.xml</Value>
+    </Setting>
+    <Setting Name="Koppelingen" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\swffb01\Test\koppeling</Value>
+    </Setting>
+    <Setting Name="TemplateCreeerZaak" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">\\swffb01\Test\template\CreeerZaak.xml</Value>
+    </Setting>
+    <Setting Name="MaximumWorkQueue" Type="System.Int32" Scope="Application">
+      <Value Profile="(Default)">100</Value>
+    </Setting>
+    <Setting Name="EmailSmtp" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">webmail.sudwestfryslan.nl</Value>
+    </Setting>
+    <Setting Name="EmailTitel" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">[TEST] ZaaksysteemVuller: fout betreffende zaaktype</Value>
+    </Setting>
     <Setting Name="UTurnDatabaseProvider" Type="System.String" Scope="Application">
-      <Value Profile="(Default)">System.Data.OleDb</Value>
+      <Value Profile="(Default)">System.Data.SqlClient</Value>
+    </Setting>
+    <Setting Name="UTurnDatabaseConnection" Type="System.String" Scope="Application">
+      <Value Profile="(Default)">Data Source=swfsqltest\sqltest01;Initial Catalog=TestZaaksysteemVuller1900;User ID=TestZaaksysteemVuller1900;Password=nzuwXXr8W6kNoiAOZ1hG;</Value>
     </Setting>
   </Settings>
 </SettingsFile>

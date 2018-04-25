@@ -11,7 +11,8 @@ namespace GenericUTurn
         System.Xml.XmlDocument config = new System.Xml.XmlDocument();
         public readonly string Code;
         public readonly System.IO.FileInfo SqlFile;
-        public readonly System.IO.FileInfo LogFile;
+        //public readonly System.IO.FileInfo LogFile;
+        public Output logging = null;
         public readonly System.IO.FileInfo ConfigFile;
 
         public Zaaktype(System.IO.FileInfo configfile)
@@ -22,7 +23,8 @@ namespace GenericUTurn
 
             ConfigFile = new System.IO.FileInfo(configfile.FullName.Replace(configfile.Extension, ".xml"));
             SqlFile = new System.IO.FileInfo(configfile.FullName.Replace(configfile.Extension, ".sql"));
-            LogFile = new FileInfo(configfile.FullName.Replace(configfile.Extension, ".log"));
+            //LogFile = new FileInfo(configfile.FullName.Replace(configfile.Extension, ".log"));
+            logging = new Output(new FileInfo(configfile.FullName.Replace(configfile.Extension, ".log")));
         }
 
         private String getXpathValue(string xpath)
@@ -125,6 +127,6 @@ namespace GenericUTurn
                 }
                 return result.ToArray();
             }
-        }   
+        }
     }
 }

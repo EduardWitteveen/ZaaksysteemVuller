@@ -1,21 +1,45 @@
-<config active="true">
+<config active="false">
 	<code>DEMO</code>
-	<desctiption>demo</desctiption>
-
+	<description>DEMO</description>
+	
 	<statuscodes>
-		<status code="statuscod1" type="start">statusosmchrijving1</status>		
-		<status code="statuscod2">statusosmchrijving2</status>
-		<status code="statuscod3" type="stop">statusosmchrijving3</status>   
+		<status code="A">Ingeboekt</status>
+		<status code="B">(Nog) niet ontvankelijk</status>
+		<status code="C">Behandelen, ontvankelijk</status>
+		<status code="D">In behandeling</status>
+		<status code="E">Zienswijze ontvangen</status>
+		<status code="F">Besluitgenomen</status>
+		<status code="G">Beroep</status>
+		<status code="H">Bezwaar/beroep</status>
+		<status code="I">Bouw stop</status>
+		<status code="K">Bouw start</status>
+		<status code="L">Start werkzaamheden</status>
+		<status code="M">Bouw gereed</status>
+		<status code="N">Gereedmelding werkzaamheden</status>
+		<status code="O">Einde</status>
 	</statuscodes>
 
 	<resultaten>
-		<resultaat code="resultaat1">resultaatomschrijving1</resultaat>
-		<resultaat code="resultaat2">resultaatomschrijving2</resultaat>
-		<resultaat code="resultaat3">resultaatomschrijving3</resultaat>		
+		<resultaat code="1">Ingetrokken</resultaat>
+		<resultaat code="2">Geweigerd</resultaat>
+		<resultaat code="3">Buiten behandeling</resultaat>
+		<resultaat code="4">Vergunningvrij</resultaat>
+		<resultaat code="5">Ander termijnschema</resultaat>		
+		<resultaat code="6">Ander bevoegd gezag</resultaat>		
+		<resultaat code="7">Vergunning verleend</resultaat>
+		<resultaat code="8">Toestemming particulier</resultaat>
+		<resultaat code="9">Toestemming mutatie</resultaat>
+		<resultaat code="10">Toestemming 4 weeks</resultaat>
+		<resultaat code="11">Geen toestemming</resultaat>
+		<resultaat code="12">Informatie verstrekt</resultaat>
+		<resultaat code="13">Niet juist ingeboekt.</resultaat>
+		<resultaat code="14">Verzoek om formele aanvraag</resultaat>
+		<resultaat code="15">S4W Gereedmelding</resultaat>
+		<resultaat code="16">Geen medewerking conceptaanvraag</resultaat>
+		<resultaat code="17">Vergunning van rechtswege verleend</resultaat>
 	</resultaten>
 
 	<email>demo@witteveen-automatisering.nl</email>
 	<provider>System.Data.OleDb</provider>		
-	<!-- <connection>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=C:\Users\eduard\ownCloud\20160324\GenericUTurn\koppeling\demo.xlsx;Extended Properties="Excel 12.0 Xml;HDR=YES;IMEX=1;";</connection> -->
-	<connection>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\..\data\demo.xls;Extended Properties="Excel 8.0;HDR=YES";</connection>
+	<connection>Provider=Microsoft.ACE.OLEDB.12.0;Data Source=..\..\..\..\data\demo.accdb</connection>
 </config>

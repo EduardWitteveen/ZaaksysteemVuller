@@ -1,1 +1,1 @@
-SELECT * FROM [demo$]
+SELECT * FROM demo ORDER BY zaaktypeomschrijving

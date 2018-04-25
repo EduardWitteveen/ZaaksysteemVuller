@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace GenericUTurn.Xml
 {
-    public class TemplaceDocument
+    public class TemplateDocument
     {
         public System.Xml.XmlDocument Document { get; set; }
 
-        public TemplaceDocument(System.IO.Stream stream)
+        public TemplateDocument(System.IO.Stream stream)
         {
             var reader = new System.IO.StreamReader(stream);
             var content = reader.ReadToEnd();
@@ -19,7 +19,7 @@ namespace GenericUTurn.Xml
 
         }
 
-        public TemplaceDocument(System.IO.FileInfo template)
+        public TemplateDocument(System.IO.FileInfo template)
         {
             if (!template.Exists) throw new System.IO.FileNotFoundException("Template file was not found:" + template.FullName, template.FullName);
 
@@ -32,18 +32,18 @@ namespace GenericUTurn.Xml
         public System.Xml.XmlDocument Substitute(Substitutor substitutor, Namespaces namespaces, Dictionary<string, string> variables)
         {
             // copy the document
-            System.Xml.XmlDocument result = (System.Xml.XmlDocument)this.Document.Clone();
+           System.Xml.XmlDocument template = (System.Xml.XmlDocument)this.Document.Clone();
             // also do somthing with the namespaces
-            var manager = new System.Xml.XmlNamespaceManager(result.NameTable);
+            var manager = new System.Xml.XmlNamespaceManager(template.NameTable);
             foreach (KeyValuePair<string, string> ns in namespaces)
             {
                 manager.AddNamespace(ns.Key, ns.Value);
             }
 
-            var navigator = result.CreateNavigator();
+            var navigator = template.CreateNavigator();
             foreach (string xpath in substitutor.Keys)
             {
-                System.Diagnostics.Debug.WriteLine("replacing xpath:" + xpath);
+//                System.Diagnostics.Debug.WriteLine("replacing xpath:" + xpath);
                 foreach (System.Xml.XPath.XPathNavigator nav in navigator.Select(xpath, manager))
                 {
                     /*
@@ -62,29 +62,59 @@ namespace GenericUTurn.Xml
                             nav.CreateAttribute("xsi","nil", namespaces["xsi"],"true");
                             nav.CreateAttribute("StUF", "noValue", namespaces["StUF"], "geenWaarde");
                         }
-                        else { 
-                            nav.SetValue(value);
+                        else {
+                            if (substitutor.xml.ContainsKey(xpath) && substitutor.xml[xpath] == "xml")
+                            {
+                                // set the xml value!
+                                nav.InnerXml = value;
+                            }
+                            else {
+                                nav.SetValue(value);
+                            }
                         }
-                        System.Diagnostics.Debug.WriteLine("\tsuccesfull set the variable: '" + search + "' : " + nav.Value);
+                        //System.Diagnostics.Debug.WriteLine("\tsuccesfull set the variable: '" + search + "' : " + nav.Value);
                     }
-#if DEBUG
                     else if (search.StartsWith("${")) {
+                       // if (!substitutor.optional.Values.Contains(search)) { 
+                        /*
                         string keys = null;
                         foreach (string key in variables.Keys)
                         {
                             if (keys == null) keys = key; else keys += ",\n" + key;
                         }
                         System.Diagnostics.Debug.WriteLine("Subsitutor could not replace variable with name:" + search + " was not found! (" + keys + ")");
+                        */
+                        //}
                     }
-#endif
                     else 
                     {
-                        nav.SetValue(search);
-                        System.Diagnostics.Debug.WriteLine("\tsuccesfull set the value: " + nav.Value);
-                    }                    
+                        if (substitutor.xml.ContainsKey(xpath) && substitutor.xml[xpath] == "xml")
+                        {
+                            // set the xml value!
+                            nav.InnerXml = search;
+                        }
+                        else {
+                            nav.SetValue(search);
+                        }
+                        // System.Diagnostics.Debug.WriteLine("\tsuccesfull set the value: " + nav.Value);
+                    }
                 }
             }
-            return result;
+            foreach (string xpath in substitutor.optional.Keys)
+            {
+                //System.Diagnostics.Debug.WriteLine("checking optional xpath:" + xpath);
+                foreach (System.Xml.XPath.XPathNavigator nav in navigator.Select(xpath, manager))
+                {
+                    var search = substitutor.optional[xpath];
+                    if (!variables.ContainsKey(search) || variables[search] == null || variables[search] == "" )
+                    {
+                        // no value for the specific variable ==> remove this entry from the xml!
+                        // System.Diagnostics.Debug.WriteLine("searched for:" + search + " : removing the elements in xml for:" + xpath);
+                        nav.DeleteSelf();                    
+                    }
+                }
+            }
+            return template;
         }
 
         public static String PrettyPrint(String XML)

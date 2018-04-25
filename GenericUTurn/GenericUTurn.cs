@@ -15,17 +15,21 @@ namespace GenericUTurn
         private Xml.Namespaces namespaces;
         private Xml.Substitutor substitutor;
         private POCO.Session uturn;
+        private Output logging = null;
 
         public GenericUTurn()
         {
-            uturn = new POCO.Session(Properties.Settings.Default.UTurnDatabaseProvider, Properties.Settings.Default.UTurnDatabaseConnection);
+            logging = new Output(this);
+
+            uturn = new POCO.Session(Properties.Settings.Default.UTurnDatabaseProvider, Properties.Settings.Default.UTurnDatabaseConnection);            
+            //uturn = new POCO.Session(System.Configuration.ConfigurationManager.ConnectionStrings["UTurnDatabase"].ProviderName, System.Configuration.ConfigurationManager.ConnectionStrings["UTurnDatabase"].ConnectionString);
             client = new ServiceClient.ServiceClient(uturn);
             substitutor = Xml.Substitutor.Load(new System.IO.FileInfo(Properties.Settings.Default.Substitutor));
             namespaces = Xml.Namespaces.Load(new System.IO.FileInfo(Properties.Settings.Default.Namespaces));
 
             koppelingen = new System.IO.DirectoryInfo(Properties.Settings.Default.Koppelingen);
-            Output.Info("Using zaaktype directory:" + koppelingen.FullName);
-            Output.Write(new FileInfo("GenericUTurn.log"));
+            logging.Info("Using zaaktype directory:" + koppelingen.FullName);
+            
             if (koppelingen.GetFiles("*.xml").Length == 0) throw new Exception("geen koppelingsbestanden(*.xml) gevonden in de directory:" + koppelingen.FullName);
         }
 
@@ -40,40 +44,52 @@ namespace GenericUTurn
                     result.Add(zaaktype);
                 }
                 else {
-                    Output.Info("inactive config file:" + configfile.FullName);
-                    Output.Write(zaaktype.LogFile);
+                    zaaktype.logging.Info("inactive config file:" + configfile.FullName);
                 }
             }
             return result.AsEnumerable<Zaaktype>();
         }
 
 
-        public int Synchronize(Zaaktype zaaktype)
+        public int Synchronize(Zaaktype zaaktype, int waittime)
         {
             int changes = 0;
 
             var koppeling = new Koppeling(uturn, client, substitutor, namespaces);
-            Output.Info("Loading zaaktype: " + zaaktype.Code + " from config file:" + zaaktype.ConfigFile.FullName);            
-            Output.Info("Loading sql from: " + zaaktype.SqlFile.FullName);
+            zaaktype.logging.Info("Loaded zaaktype: " + zaaktype.Code + " from config file:" + zaaktype.ConfigFile.FullName);
             var sql = File.ReadAllText(zaaktype.SqlFile.FullName);
+            zaaktype.logging.Info("Loaded sql from: " + zaaktype.SqlFile.FullName);
 
-            try { 
-                changes = koppeling.Synchronize(zaaktype, sql);
+#if !DEBUG
+            try
+            { 
+#endif
+            changes = koppeling.Synchronize(zaaktype, sql, waittime);
+#if !DEBUG
             }
             catch (Exception ex) {
-                Output.Warn("Fout bij synchroniseren van zaaktype:" + zaaktype.Code, ex);
+                var msg = "Fout bij synchroniseren van zaaktype:" + zaaktype.Code;
+                zaaktype.logging.Error(msg, ex);
+                logging.Warn(msg, ex);
 
-                System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
-                message.To.Add(zaaktype.Owner);
-                message.CC.Add(Properties.Settings.Default.EmailAfzender);
-                message.Subject = Properties.Settings.Default.EmailTitel + " #" + zaaktype.Code + ": " + zaaktype.Description;
-                message.From = new System.Net.Mail.MailAddress(Properties.Settings.Default.EmailAfzender);
-                message.Body = ex.ToString();
-                System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Properties.Settings.Default.EmailSmtp);
-                smtp.UseDefaultCredentials = true;
-                smtp.Send(message);
+                try
+                {
+                    System.Net.Mail.MailMessage message = new System.Net.Mail.MailMessage();
+                    message.To.Add(zaaktype.Owner);
+                    message.CC.Add(Properties.Settings.Default.EmailAfzender);
+                    message.Subject = Properties.Settings.Default.EmailTitel + " #" + zaaktype.Code + ": " + zaaktype.Description;
+                    message.From = new System.Net.Mail.MailAddress(Properties.Settings.Default.EmailAfzender);
+                    message.Body = ex.ToString();
+                    System.Net.Mail.SmtpClient smtp = new System.Net.Mail.SmtpClient(Properties.Settings.Default.EmailSmtp);
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Send(message);
+                }
+                catch (Exception ex2)
+                {
+                    logging.Error("error sending email to:" + zaaktype.Owner, ex);
+                }
             }
-            Output.Write(zaaktype.LogFile);
+#endif
             return changes;
         }
     }

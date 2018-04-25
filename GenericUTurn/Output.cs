@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -6,30 +6,53 @@ using System.Text;
 
 namespace GenericUTurn
 {
-    public static class Output
+    public class Output
     {
 
-        private static StringWriter writer = new StringWriter();
+        private StreamWriter writer = null;
+        private GenericUTurn genericUTurn;
+        
+        FileInfo logfile = null;
 
-        private static string Stamp(string level)
+        public Output(FileInfo logfile)
+        {
+            this.logfile = logfile;
+        }
+
+        public Output(Object usedin)
+        {
+            this.logfile = new FileInfo(usedin.GetType().Name + ".log");
+            // whether the StreamWriter will flush its buffer to the underlying stream after every call to StreamWriter.Write.            
+        }
+
+        private string Stamp(string level)
         {
             return "[" + Environment.MachineName + " " + DateTime.Now.ToString("yyyyMMddHHmmss") + " " + level + "] ";
         }
 
-        public static void Info(string message)
+        public void Info(string message)
         {
+            writer = logfile.AppendText();
+            writer.AutoFlush = true;
             writer.WriteLine(Stamp("info") + message);
+            writer.Close();
             Console.Out.WriteLine(message);
         }
 
-        public static void Error(string message)
+        public void Error(string message)
         {
+            writer = logfile.AppendText();
+            writer.AutoFlush = true;
             writer.WriteLine(Stamp("ERROR") + message);
+            writer.Close();
             Console.Error.WriteLine(message);
         }
 
-        public static void Error(string message, Exception ex)
+        public void Error(string message, Exception ex)
         {
+            writer = logfile.AppendText();
+            writer.AutoFlush = true;
+
             writer.WriteLine(Stamp("ERROR") + message);
             Console.Error.WriteLine(message);
 
@@ -50,16 +73,26 @@ namespace GenericUTurn
 
             writer.WriteLine(ex.StackTrace);
             Console.Error.WriteLine(ex.StackTrace);
+
+            writer.Close();
         }
 
-        public static void Warn(string message)
+        public void Warn(string message)
         {
+            writer = logfile.AppendText();
+            writer.AutoFlush = true;
+
             writer.WriteLine(Stamp("warn") + message);
             Console.Error.WriteLine(message);
+
+            writer.Close();
         }
 
-        public static void Warn(string message, Exception ex)
+        public void Warn(string message, Exception ex)
         {
+            writer = logfile.AppendText();
+            writer.AutoFlush = true;
+
             writer.WriteLine(Stamp("warn") + message);
             Console.Error.WriteLine(message);
 
@@ -80,21 +113,18 @@ namespace GenericUTurn
 
             writer.WriteLine(ex.StackTrace);
             Console.Error.WriteLine(ex.StackTrace);
+
+            writer.Close();
         }
 
 
-        public static String ToString()
+        public String ToString()
         {
             return writer.ToString();
         }
 
-        public static void Write(FileInfo logfile)
-        {
-            var output = logfile.AppendText();
-            output.Write(writer);
-            output.Close();
-            // clear everything
-            writer = new StringWriter();
-        }
+        //public void Write(FileInfo logfile)
+        //{
+        //}
     }
 }

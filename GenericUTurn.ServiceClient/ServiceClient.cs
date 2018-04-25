@@ -1,4 +1,5 @@
-﻿using System;
+﻿//using HdrHistogram;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net;
@@ -10,6 +11,7 @@ namespace GenericUTurn.ServiceClient
 
     public class ServiceClientException : Exception
     {
+        // A Histogram covering the range from ~466 nanoseconds to 1 hour (3,600,000,000,000 ns) with a resolution of 3 significant figures:
         public int HttpStatusCode;
         //public Exception innerexception;
         //public string message;
@@ -24,6 +26,7 @@ namespace GenericUTurn.ServiceClient
 
     public class ServiceClient
     {
+        //HdrHistogram.LongHistogram histogram = new HdrHistogram.LongHistogram(HdrHistogram.TimeStamp.Hours(1), 3);
         //public static ServiceClient Test1Client
         //{
         //    get
@@ -48,7 +51,7 @@ namespace GenericUTurn.ServiceClient
         }
 
         // TODO: misschien Substitutor niet in request, maar als een parameter hier?
-        public ServiceClientResponse Call(string kenmerk, Uri url, ServiceClientRequest request, Dictionary<string, string> variables) 
+        public ServiceClientResponse Call(string kenmerk, Uri url, ServiceClientRequest request, int WaitTime, Dictionary<string, string> variables) 
         {
             System.Net.HttpWebRequest webRequest = (System.Net.HttpWebRequest)System.Net.WebRequest.Create(url);
             webRequest.Headers.Add("SOAPAction", request.Action);
@@ -56,7 +59,7 @@ namespace GenericUTurn.ServiceClient
             webRequest.Accept = "text/xml";
             webRequest.Method = "POST";
 
-            var entry = new POCO.Bericht();
+            var entry = new POCO.UTurnBericht();
             entry.Action = request.Action;
             entry.Url = url.ToString();
             entry.Kenmerk = kenmerk;
@@ -96,15 +99,17 @@ namespace GenericUTurn.ServiceClient
                 content = GenericUTurn.Xml.SoapEnvelope.Wrap(content);
             }
 
-            entry.RequestBody = GenericUTurn.Xml.TemplaceDocument.PrettyPrint(content.OuterXml);
+            entry.RequestBody = GenericUTurn.Xml.TemplateDocument.PrettyPrint(content.OuterXml);
             logging.Update(entry);
-            System.Diagnostics.Debug.Print(">>>>>>>>>>\nrequesting:" + url);
-            System.Diagnostics.Debug.Print("action:" + entry.Action);
-            System.Diagnostics.Debug.Print(entry.RequestBody);            
+//            System.Diagnostics.Debug.Print(">>>>>>>>>>\nrequesting:" + url);
+//            System.Diagnostics.Debug.Print("action:" + entry.Action);
+//            System.Diagnostics.Debug.Print(entry.RequestBody);            
 
             ServiceClientResponse result = null;
             try
             {
+                long startTimestamp = System.Diagnostics.Stopwatch.GetTimestamp();
+
                 using (System.IO.Stream stream = webRequest.GetRequestStream())
                 {
                     content.Save(stream);
@@ -117,7 +122,10 @@ namespace GenericUTurn.ServiceClient
                 // get the response from the completed web request.
                 var response = (System.Net.HttpWebResponse) webRequest.EndGetResponse(asyncResult);
                 entry.ResponseCode = (int) response.StatusCode;
-                result = new ServiceClientResponse(response, variables);   
+                result = new ServiceClientResponse(response, variables);
+
+                long elapsed = System.Diagnostics.Stopwatch.GetTimestamp() - startTimestamp;
+                //histogram.RecordValue(elapsed);
 
             }
             catch (System.Net.WebException ex)
@@ -130,6 +138,8 @@ namespace GenericUTurn.ServiceClient
                     inner = inner.InnerException;
                 } 
                 */
+
+                // there was connection, but something in content wrong
                 if (ex.Status == WebExceptionStatus.ProtocolError)
                 {
                     var response = ex.Response as HttpWebResponse;
@@ -139,21 +149,37 @@ namespace GenericUTurn.ServiceClient
                         {
                             System.IO.StreamReader reader = new System.IO.StreamReader(stream, Encoding.UTF8);
                             entry.ResponseBody = reader.ReadToEnd();
-                        }
+                        }   
                         entry.ResponseCode = (int) response.StatusCode;
                         logging.Update(entry);
                         // and throw again (we did our logging)
                         throw new ServiceClientException((int)response.StatusCode, entry.ResponseBody, ex);
                     }
                 }
-                new Exception("error connecting to:" + url + " soapaction:" + entry.Action + " xml:" + entry.RequestBody, ex);
-
+                else {
+                    entry.ResponseBody = ex.ToString();
+                    logging.Update(entry);
+                    throw ex;
+                    // throw new Exception("error connecting to:" + url + " soapaction:" + entry.Action + " xml:" + entry.RequestBody, ex);
+                }
             }
-            entry.ResponseBody = GenericUTurn.Xml.TemplaceDocument.PrettyPrint(result.Content.Document.OuterXml);
+            entry.ResponseBody = GenericUTurn.Xml.TemplateDocument.PrettyPrint(result.Content.Document.OuterXml);
             logging.Update(entry);
-            System.Diagnostics.Debug.Print("<<<<<<<<<<\nresponse:" + url);
-            System.Diagnostics.Debug.Print("action:" + entry.Action);
-            System.Diagnostics.Debug.Print(entry.ResponseBody);
+
+            if (WaitTime > 0)
+            {
+                System.Diagnostics.Debug.Print("sleeping for {0} milliseconds, to keep BCT-CMIS alive!", WaitTime);
+                System.Threading.Thread.Sleep(WaitTime);
+            }
+
+            //            System.Diagnostics.Debug.Print("<<<<<<<<<<\nresponse:" + url);
+            //            System.Diagnostics.Debug.Print("action:" + entry.Action);
+            //            System.Diagnostics.Debug.Print(entry.ResponseBody);
+
+            // using (var writer = new System.IO.StreamWriter("HdrHistogram-webservice.hgrm"))
+            // {
+            //histogram.OutputPercentileDistribution(writer);
+            // }
 
             return result;
         }

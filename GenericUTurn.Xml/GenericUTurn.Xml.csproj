@@ -87,7 +87,7 @@
     <Compile Include="SoapEnvelope.cs" />
     <Compile Include="Namespaces.cs" />
     <Compile Include="Substitutor.cs" />
-    <Compile Include="TemplaceDocument.cs" />
+    <Compile Include="TemplateDocument.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

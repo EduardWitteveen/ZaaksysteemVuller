@@ -9,11 +9,11 @@ namespace GenericUTurn.ServiceClient
     {
         private Dictionary<string, string> variables;
 
-        public GenericUTurn.Xml.TemplaceDocument Content { get; set; }
+        public GenericUTurn.Xml.TemplateDocument Content { get; set; }
 
         public ServiceClientResponse(System.Net.WebResponse webResponse, Dictionary<string, string> variables)
         {
-            Content = new GenericUTurn.Xml.TemplaceDocument(webResponse.GetResponseStream());
+            Content = new GenericUTurn.Xml.TemplateDocument(webResponse.GetResponseStream());
             this.variables = variables;
         }
     }
