@@ -56,7 +56,9 @@ namespace GenericUTurn.POCO
         }
         public string ZaakstatusOmschrijving
         {
-            get { return ConvertToString(Row["ZaakstatusOmschrijving"]); }
+            get {
+                return ConvertToString(Row["ZaakstatusOmschrijving"]);
+            }
             //set { Row["ZaakstatusOmschrijving"] = value; }
         }
 
@@ -149,8 +151,9 @@ namespace GenericUTurn.POCO
         public string AanvragerNpsBsn
         {
             get {
-                string bsn = Convert.ToString(Row["AanvragerNpsBsn"]);
-                return bsn.PadLeft(9, '0');
+                var nummer = Convert.ToString(Row["AanvragerNpsBsn"]);
+                if (nummer.Trim().Length == 0) return "";
+                return nummer.PadLeft(9, '0');
             }
             //set { Row["AanvragerNpsBsn"] = value; }
         }
@@ -186,17 +189,27 @@ namespace GenericUTurn.POCO
         }
         public string AanvragerNnpRsin
         {
-            get { return Convert.ToString(Row["aanvragerNnpRsin"]); }
+            get { 
+                var nummer = Convert.ToString(Row["aanvragerNnpRsin"]);
+                if(nummer.Trim().Length == 0) return "";
+                return nummer.PadLeft(9, '0');
+            }
             //set { Row["aanvragerNnpRsin"] = value; }
         }
         public string AanvragerNnpStatutaireNaam
         {
-            get { return Convert.ToString(Row["aanvragerNnpStatutaireNaam"]); }
+            get { return Convert.ToString(Row["aanvragerNnpStatutaireNaam"]);
+            }
             //set { Row["aanvragerNnpStatutaireNaam"] = value; }
         }
         public string AanvragerVesVestigingsNummer
         {
-            get { return Convert.ToString(Row["aanvragerVesVestigingsNummer"]); }
+            // lengte 12 nodig!
+            get {
+                var nummer = Convert.ToString(Row["aanvragerVesVestigingsNummer"]);
+                if (nummer.Trim().Length == 0) return "";
+                return nummer.PadLeft(12, '0');
+            }
             //set { Row["aanvragerVesVestigingsNummer"] = value; }
         }
         public string AanvragerVesHandelsnaam
@@ -253,16 +266,29 @@ namespace GenericUTurn.POCO
                     // https://www.nuget.org/packages/Microsoft.SqlServer.Types/
                     // https://www.microsoft.com/en-us/download/details.aspx?id=26728
                     // 
+
                     Microsoft.SqlServer.Types.SqlGeometry geom = Microsoft.SqlServer.Types.SqlGeometry.Parse(wkt);
-                    // what does this do?
+                    // Converts an invalid SqlGeometry instance into a SqlGeometry instance with a valid Open Geospatial Consortium (OGC) type.
                     geom = geom.MakeValid();
-                    var gmlstring = geom.AsGml().Value;                    
-                    var doc = new System.Xml.XmlDocument();
-                    doc.LoadXml(gmlstring);
-                    var documentnode = doc.DocumentElement;
-                    documentnode.SetAttribute("srsDimension", "2");
-                    documentnode.SetAttribute("srsName", "urn:ogc:def:crs:EPSG::28992");
-                    return documentnode.OuterXml;
+
+                    // solve error: // The element 'lokatie' in namespace 'http://www.egem.nl/StUF/sector/zkn/0310' has invalid child element 'MultiSurface' in namespace 'http://www.opengis.net/gml'. List of possible elements expected: '_Surface, Polygon, Surface, OrientableSurface, CompositeSurface, PolyhedralSurface, TriangulatedSurface, Tin' in namespace 'http://www.opengis.net/gml'
+                    var validGeometryTypes = new List<string>() { "_Surface", "Polygon", "Surface", "OrientableSurface", "CompositeSurface", "PolyhedralSurface", "TriangulatedSurface", "Tin" };
+                    var geometryType = geom.STGeometryType();
+                    if (validGeometryTypes.Contains(geometryType.Value))
+                    {
+                        var gmlstring = geom.AsGml().Value;
+                        var doc = new System.Xml.XmlDocument();
+                        doc.LoadXml(gmlstring);
+                        var documentnode = doc.DocumentElement;
+                        documentnode.SetAttribute("srsDimension", "2");
+                        documentnode.SetAttribute("srsName", "urn:ogc:def:crs:EPSG::28992");
+                        return documentnode.OuterXml;
+                    }
+                    var msg = "ERROR: cannot create a valid GML geom from the given geomtype:" + geometryType.Value + " in processid:" + Procesid + " bij zaaktype:" + ZaaktypeOmschrijving + "(" + ZaaktypeCode + ")";
+                    System.Diagnostics.Debug.WriteLine(msg);
+                    Console.WriteLine(msg);
+
+                    return null;
                 }
             }
             //set {
@@ -282,9 +308,12 @@ namespace GenericUTurn.POCO
             if (DBNull.Value.Equals(ZaakstatusCode)) throw new ArgumentNullException("veld ZaakstatusCode was niet aangeleverd voor procesid:" + Procesid);
             if (DBNull.Value.Equals(StartDatum)) throw new ArgumentNullException("veld Startdatum was niet aangeleverd voor procesid:" + Procesid);
             if (DBNull.Value.Equals(RegistratieDatum)) throw new ArgumentNullException("veld Registratiedatum was niet aangeleverd voor procesid:" + Procesid);
+
+            if (ZaakOmschrijving.Length > 80) throw new ArgumentOutOfRangeException("zaak.ZaakOmschrijving length > 80 :" + ZaakOmschrijving + " voor procesid:" + Procesid);
             // some checks on errors we encountered in de xml during transmission
             // leuk dat je hier geen foutmeldingen van krijgt overigens,...
             if (ZaakstatusCode.Length > 10) throw new ArgumentOutOfRangeException("zaak.ZaakstatusCode length > 10 :" + ZaakstatusCode + " voor procesid:" + Procesid);
+            if (ZaakstatusOmschrijving.Length > 80) throw new ArgumentOutOfRangeException("zaak.ZaakstatusOmschrijving length > 80 :" + ZaakstatusOmschrijving + " voor procesid:" + Procesid);
             //ZaakstatusOmschrijving = ZaakstatusOmschrijving.Substring(0, 10);
 
 

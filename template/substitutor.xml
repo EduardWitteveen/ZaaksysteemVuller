@@ -2,7 +2,7 @@
 <substitutor>
   <!-- verbinding -->
   <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:organisatie">1900</entry>
-  <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:applicatie">Midoffice Vuller 1.0</entry> -->
+  <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:applicatie">Zaaksysteemvuller 3.0</entry> -->
   <entry key="//ZKN:stuurgegevens/StUF:zender/StUF:gebruiker">${variable-eerste-ZaaktypeCode}</entry>
   <entry key="//ZKN:stuurgegevens/StUF:ontvanger/StUF:organisatie">1900</entry>
   <entry key="//ZKN:stuurgegevens/StUF:ontvanger/StUF:applicatie">CDR</entry>
@@ -17,8 +17,7 @@
   ${variable-eerste-ZaakId}, 
   ${variable-eerste-ZaakOmschrijving}, 
   ${variable-eerste-ZaakToelichting}, 
-  ${variable-eerste-ResultaatOmschrijving}, 
-  ${variable-eerste-ResultaatToelichting}, 
+  ${variable-eerste-ResultaatOmschrijving},
   ${variable-eerste-ZaakstatusCode}, 
   ${variable-eerste-ZaakstatusOmschrijving},
   ${variable-eerste-StartDatum}, 
@@ -52,7 +51,7 @@
   <entry key="//ZKN:object[1]/@StUF:sleutelVerzendend">${variable-eerste-Procesid}</entry>
   <entry key="//ZKN:object[1]/ZKN:identificatie">${variable-eerste-ZaakId}</entry>
   <entry key="//ZKN:object[1]/ZKN:resultaat/ZKN:omschrijving">${variable-eerste-ResultaatOmschrijving}</entry>
-  <entry key="//ZKN:object[1]/ZKN:resultaat/ZKN:toelichting">${variable-eerste-ResultaatToelichting}</entry>
+  <entry key="//ZKN:object[1]/ZKN:resultaat/ZKN:toelichting">${variable-eerste-ResultaatOmschrijving}</entry>
   <entry key="//ZKN:object[1]/StUF:extraElementen/StUF:extraElement[@naam='kanaalcode']">${variable-eerste-Medium}</entry>
   <entry key="//ZKN:object[1]/ZKN:startdatum">${variable-eerste-StartDatum}</entry>
   <entry key="//ZKN:object[1]/ZKN:registratiedatum">${variable-eerste-RegistratieDatum}</entry>
@@ -74,15 +73,14 @@
   <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsaanduiding">${variable-eerste-AanvragerNpsGeslachtsaanduiding}</entry>
 
   <!-- <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon">${variable-eerste-aanvragerNnpRsin}</optional> -->
-  <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon">${variable-eerste-aanvragerNnpRsin}</optional> 
-  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:inn.nnpId">${variable-eerste-aanvragerNnpRsin}</entry>
-  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:statutaireNaam">${variable-eerste-aanvragerNnpStatutaireNaam}</entry>
+  <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:nietNatuurlijkPersoon]">${variable-eerste-AanvragerNnpRsin}</optional> 
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:inn.nnpId">${variable-eerste-AanvragerNnpRsin}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:statutaireNaam">${variable-eerste-AanvragerNnpStatutaireNaam}</entry>
 
   <!-- <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging">${variable-eerste-aanvragerVesVestigingsNummer}</optional> -->
-  <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:vestiging]">${variable-eerste-aanvragerVesVestigingsNummer}</optional>
-  
-  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:vestigingsNummer">${variable-eerste-aanvragerVesVestigingsNummer}</entry>
-  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:handelsnaam">${variable-eerste-aanvragerVesHandelsnaam}</entry>
+  <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:vestiging]">${variable-eerste-AanvragerVesVestigingsNummer}</optional>  
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:vestigingsNummer">${variable-eerste-AanvragerVesVestigingsNummer}</entry>
+  <entry key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:handelsnaam">${variable-eerste-AanvragerVesHandelsnaam}</entry>
     
   <!-- <optional key="//ZKN:object[1]/ZKN:anderZaakObject/ZKN:lokatie">${variable-eerste-lokatiePolygon}</optional> -->
   <optional key="//ZKN:object[1]/ZKN:anderZaakObject[ZKN:lokatie]">${variable-eerste-lokatiePolygon}</optional>
@@ -104,7 +102,7 @@
   <entry key="//ZKN:object[2]/@StUF:sleutelVerzendend">${variable-tweede-Procesid}</entry>
   <entry key="//ZKN:object[2]/ZKN:identificatie">${variable-tweede-ZaakId}</entry>
   <entry key="//ZKN:object[2]/ZKN:resultaat/ZKN:omschrijving">${variable-tweede-ResultaatOmschrijving}</entry>
-  <entry key="//ZKN:object[2]/ZKN:resultaat/ZKN:toelichting">${variable-tweede-ResultaatToelichting}</entry>
+  <entry key="//ZKN:object[2]/ZKN:resultaat/ZKN:toelichting">${variable-tweede-ResultaatOmschrijving}</entry>
   <entry key="//ZKN:object[2]/StUF:extraElementen/StUF:extraElement[@naam='kanaalcode']">${variable-tweede-Medium}</entry>
   <entry key="//ZKN:object[2]/ZKN:startdatum">${variable-tweede-StartDatum}</entry>
   <entry key="//ZKN:object[2]/ZKN:registratiedatum">${variable-tweede-RegistratieDatum}</entry>
@@ -116,8 +114,8 @@
   <entry key="//ZKN:object[2]/ZKN:isVan/ZKN:gerelateerde/ZKN:omschrijving">${variable-tweede-ZaaktypeOmschrijving}</entry>
   <entry key="//ZKN:object[2]/ZKN:toelichting">${variable-tweede-ZaakToelichting}</entry>
   
-  <!-- <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon">${variable-eerste-AanvragerNpsBsn}</optional> -->
-  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:natuurlijkPersoon]">${variable-eerste-AanvragerNpsBsn}</optional>
+  <!-- <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon">${variable-tweede-AanvragerNpsBsn}</optional> -->
+  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:natuurlijkPersoon]">${variable-tweede-AanvragerNpsBsn}</optional>
   <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:inp.bsn">${variable-tweede-AanvragerNpsBsn}</entry>
   <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voornamen">${variable-tweede-AanvragerNpsVoornamen}</entry>
   <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:voorletters">${variable-tweede-AanvragerNpsVoorletters}</entry>
@@ -125,19 +123,19 @@
   <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsnaam">${variable-tweede-AanvragerNpsGeslachtsnaam}</entry>
   <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:natuurlijkPersoon/BG:geslachtsaanduiding">${variable-tweede-AanvragerNpsGeslachtsaanduiding}</entry>
 
-  <!-- <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon">${variable-eerste-aanvragerNnpRsin}</optional>  -->
-  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:nietNatuurlijkPersoon]">${variable-eerste-aanvragerNnpRsin}</optional>
-  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:inn.nnpId">${variable-eerste-aanvragerNnpRsin}</entry>
-  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:statutaireNaam">${variable-eerste-aanvragerNnpStatutaireNaam}</entry>
+  <!-- <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon">${variable-tweede-aanvragerNnpRsin}</optional> -->
+  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:nietNatuurlijkPersoon]">${variable-tweede-AanvragerNnpRsin}</optional> 
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:inn.nnpId">${variable-tweede-AanvragerNnpRsin}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:nietNatuurlijkPersoon/BG:statutaireNaam">${variable-tweede-AanvragerNnpStatutaireNaam}</entry>
 
-  <!-- <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging">${variable-eerste-aanvragerVesVestigingsNummer}</optional> -->
-  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:vestiging]">${variable-eerste-aanvragerVesVestigingsNummer}</optional>
-  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:vestigingsNummer">${variable-eerste-aanvragerVesVestigingsNummer}</entry>
-  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:handelsnaam">${variable-eerste-aanvragerVesHandelsnaam}</entry>
+  <!-- <optional key="//ZKN:object[1]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging">${variable-tweede-aanvragerVesVestigingsNummer}</optional> -->
+  <optional key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde[ZKN:vestiging]">${variable-tweede-AanvragerVesVestigingsNummer}</optional>  
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:vestigingsNummer">${variable-tweede-AanvragerVesVestigingsNummer}</entry>
+  <entry key="//ZKN:object[2]/ZKN:heeftAlsInitiator/ZKN:gerelateerde/ZKN:vestiging/BG:handelsnaam">${variable-tweede-AanvragerVesHandelsnaam}</entry>
     
-  <!-- <optional key="//ZKN:object[2]/ZKN:anderZaakObject/ZKN:lokatie">${variable-eerste-lokatiePolygon}</optional> -->
-  <optional key="//ZKN:object[2]/ZKN:anderZaakObject[ZKN:lokatie]">${variable-eerste-lokatiePolygon}</optional>
-  <entry key="//ZKN:object[2]/ZKN:anderZaakObject/ZKN:lokatie" format="xml">${variable-eerste-lokatiePolygon}</entry>  
+  <!-- <optional key="//ZKN:object[2]/ZKN:anderZaakObject/ZKN:lokatie">${variable-tweede-lokatiePolygon}</optional> -->
+  <optional key="//ZKN:object[2]/ZKN:anderZaakObject[ZKN:lokatie]">${variable-tweede-lokatiePolygon}</optional>
+  <entry key="//ZKN:object[2]/ZKN:anderZaakObject/ZKN:lokatie" format="xml">${variable-tweede-lokatiePolygon}</entry>
   
   <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:identificatie">${variable-tweede-MedewerkerIdentificatie}</entry>
   <entry key="//ZKN:object[2]/ZKN:heeftAlsUitvoerende/ZKN:gerelateerde/ZKN:medewerker/ZKN:voorletters">${variable-tweede-MedewerkerVoorletters}</entry>

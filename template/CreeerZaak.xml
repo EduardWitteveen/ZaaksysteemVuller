@@ -25,16 +25,9 @@
 		<ZKN:identificatie>Zaakid</ZKN:identificatie>
 		<ZKN:omschrijving>Een omschrijving</ZKN:omschrijving>
 		<ZKN:toelichting>Een toelichting</ZKN:toelichting>
-
-		<!--
-		<ZKN:kenmerk>
-			<ZKN:kenmerk>13113</ZKN:kenmerk>
-			<ZKN:bron>KING</ZKN:bron>
-		</ZKN:kenmerk>
-		-->
-		<ZKN:anderZaakObject>
+		<!--<ZKN:kenmerk><ZKN:kenmerk>13113</ZKN:kenmerk><ZKN:bron>KING</ZKN:bron></ZKN:kenmerk>--><ZKN:anderZaakObject>
 			<ZKN:omschrijving>Geometie omschrijving</ZKN:omschrijving>
-      <ZKN:aanduiding>Geometie aanduiding</ZKN:aanduiding>
+			<ZKN:aanduiding>Geometie aanduiding</ZKN:aanduiding>
 			<ZKN:lokatie>
 				<gml:Polygon srsDimension="2" srsName="urn:ogc:def:crs:EPSG::28992">
 					<gml:exterior>
@@ -62,29 +55,25 @@
 				</gml:Polygon>
 			</ZKN:lokatie>
 			<ZKN:registratie>Geometrie registratie</ZKN:registratie>
-		</ZKN:anderZaakObject>		
-		
+		</ZKN:anderZaakObject>
 		<!-- resultaat -->
 		<ZKN:resultaat>
 			<ZKN:omschrijving>resultaat omschrijving</ZKN:omschrijving>
-			<ZKN:toelichting>resultaat toelichting</ZKN:toelichting>
+			<!-- mag niet op productie -->
+			<!-- <ZKN:toelichting>resultaat toelichting</ZKN:toelichting> -->
 		</ZKN:resultaat>
-
 		<!-- datums -->
 		<ZKN:startdatum>20150715</ZKN:startdatum>
 		<ZKN:registratiedatum>20150715</ZKN:registratiedatum>
 		<ZKN:publicatiedatum>20150715</ZKN:publicatiedatum>
 		<ZKN:uiterlijkeEinddatum>20150715</ZKN:uiterlijkeEinddatum>
 		<ZKN:einddatum>20130516</ZKN:einddatum>
-
 		<ZKN:archiefnominatie>N</ZKN:archiefnominatie>
 		<ZKN:zaakniveau>1</ZKN:zaakniveau>
 		<ZKN:deelzakenIndicatie>N</ZKN:deelzakenIndicatie>
-
 		<StUF:extraElementen>
 			<StUF:extraElement naam="kanaalcode">Web</StUF:extraElement>
-		</StUF:extraElementen>      
-
+		</StUF:extraElementen>
 		<!-- zaak type -->
 		<ZKN:isVan StUF:entiteittype="ZAKZKT" StUF:verwerkingssoort="T">
 			<ZKN:gerelateerde StUF:entiteittype="ZKT" StUF:verwerkingssoort="T">
@@ -92,11 +81,9 @@
 				<ZKN:code>zaakcode</ZKN:code>
 			</ZKN:gerelateerde>
 		</ZKN:isVan>
-
 		<!-- aanvrager -->
 		<ZKN:heeftAlsInitiator StUF:entiteittype="ZAKBTRINI"   StUF:verwerkingssoort="T">
-
-			<ZKN:gerelateerde>		
+			<ZKN:gerelateerde>
 				<!-- natuurlijk persoon -->
 				<ZKN:natuurlijkPersoon StUF:entiteittype="NPS"  StUF:verwerkingssoort="T">
 					<BG:inp.bsn>123456789</BG:inp.bsn>
@@ -109,30 +96,23 @@
 					<BG:geboortedatum>19800101</BG:geboortedatum>
 				</ZKN:natuurlijkPersoon>
 			</ZKN:gerelateerde>
-
 			<ZKN:gerelateerde>
-				<!-- niet natuurlijk persoon (bedrijf) -->
+				<!-- niet natuurlijk persoon (rsin) -->
 				<ZKN:nietNatuurlijkPersoon StUF:entiteittype="NNP" StUF:verwerkingssoort="T">
-					<!--
-					inn.nnpId == rsin nummer: https://discussie.kinggemeenten.nl/discussie/gemma/stuf-204-bg/nieuwe-nummers-kvk
-					rsin nummer == bsn nummer : http://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/voordat_u_start/rechtsvorm/
-					(bij eenmanszaak) -->
+					<!--	inn.nnpId == rsin nummer: https://discussie.kinggemeenten.nl/discussie/gemma/stuf-204-bg/nieuwe-nummers-kvk	rsin nummer == bsn nummer : http://www.belastingdienst.nl/wps/wcm/connect/bldcontentnl/belastingdienst/zakelijk/ondernemen/onderneming_starten/voordat_u_start/rechtsvorm/	(bij eenmanszaak) -->
 					<BG:inn.nnpId>123456789</BG:inn.nnpId>
+					<BG:authentiek>J</BG:authentiek>
 					<BG:statutaireNaam>Statutaire Naam</BG:statutaireNaam>
 				</ZKN:nietNatuurlijkPersoon>
 			</ZKN:gerelateerde>
-
 			<ZKN:gerelateerde>
-				<!-- vestiging -->
+				<!-- niet natuurlijk persoon (vestiging) -->
 				<ZKN:vestiging StUF:entiteittype="VES" StUF:verwerkingssoort="T">
 					<BG:vestigingsNummer>232323232323</BG:vestigingsNummer>
 					<BG:handelsnaam>Handels Naam</BG:handelsnaam>
 				</ZKN:vestiging>
 			</ZKN:gerelateerde>
-
-
 		</ZKN:heeftAlsInitiator>
-
 		<!-- medewerker -->
 		<ZKN:heeftAlsUitvoerende StUF:entiteittype="ZAKBTRUTV"  StUF:verwerkingssoort="T">
 			<ZKN:gerelateerde>
@@ -144,7 +124,6 @@
 				</ZKN:medewerker>
 			</ZKN:gerelateerde>
 		</ZKN:heeftAlsUitvoerende>
-
 		<!-- status -->
 		<ZKN:heeft StUF:entiteittype="ZAKSTT"   StUF:verwerkingssoort="T">
 			<ZKN:gerelateerde StUF:entiteittype="STT" StUF:verwerkingssoort="T">
@@ -166,6 +145,5 @@
 				<ZKN:rolomschrijvingGeneriek>Uitvoerder</ZKN:rolomschrijvingGeneriek>
 			</ZKN:isGezetDoor>
 		</ZKN:heeft>
-
 	</ZKN:object>
 </ZKN:zakLk01>

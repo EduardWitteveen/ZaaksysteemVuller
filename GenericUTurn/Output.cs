@@ -10,7 +10,7 @@ namespace GenericUTurn
     {
 
         private StreamWriter writer = null;
-        private GenericUTurn genericUTurn;
+        //private GenericUTurn genericUTurn;
         
         FileInfo logfile = null;
 
@@ -118,7 +118,7 @@ namespace GenericUTurn
         }
 
 
-        public String ToString()
+        public override String ToString()
         {
             return writer.ToString();
         }

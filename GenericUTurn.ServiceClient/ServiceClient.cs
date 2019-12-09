@@ -190,10 +190,10 @@ namespace GenericUTurn.ServiceClient
             {
                 case System.Xml.Schema.XmlSeverityType.Error:
                     throw new Exception("Error:" +  e.Message);
-                    break;
+                    //break;
                 case System.Xml.Schema.XmlSeverityType.Warning:
                     throw new Exception("Warning:" + e.Message);
-                    break;
+                    //break;
                 default:
                     throw new Exception("Unknown:" + e.Message);
             }

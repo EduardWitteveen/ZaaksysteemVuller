@@ -54,6 +54,7 @@ namespace GenericUTurn.Xml
                     if (variables.ContainsKey(search))
                     {
                         var value = variables[search];
+
                         if (value == null || value.Trim().Length == 0)
                         {
                             // what will we do with empty values?
@@ -63,6 +64,10 @@ namespace GenericUTurn.Xml
                             nav.CreateAttribute("StUF", "noValue", namespaces["StUF"], "geenWaarde");
                         }
                         else {
+                            // should something which is valid in xml world
+                            value = new string(value.Where(c => !char.IsControl(c)).ToArray());
+                            //value = new string(value.Where(c => char.IsLetter(c) || char.IsDigit(c)).ToArray());
+
                             if (substitutor.xml.ContainsKey(xpath) && substitutor.xml[xpath] == "xml")
                             {
                                 // set the xml value!
