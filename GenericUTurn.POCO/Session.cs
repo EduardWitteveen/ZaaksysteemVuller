@@ -23,7 +23,7 @@ namespace GenericUTurn.POCO
             // Add the DLL to your project. Set the properties of SqlServerSpatial110.dll to “Copy to Output directory = Copy always”
             // https://www.nuget.org/packages/Microsoft.SqlServer.Types/
             // https://www.microsoft.com/en-us/download/details.aspx?id=26728
-            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
+//            SqlServerTypes.Utilities.LoadNativeAssemblies(AppDomain.CurrentDomain.BaseDirectory);
 
 
             // ERROR:   'Microsoft.ACE.OLEDB.12.0' provider is not registered on the local machine
